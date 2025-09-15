@@ -1,6 +1,14 @@
+# Para limpar pasta "target"
+
+    ./mvnw package
+
 # Para gerar .jar
 
     ./mvnw package
+
+# Para rodar testes
+
+    ./mvw test
 
 # Para rodar
 
