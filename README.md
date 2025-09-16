@@ -1,6 +1,6 @@
 # Para limpar pasta "target"
 
-    ./mvnw package
+    ./mvnw clean
 
 # Para gerar .jar
 
