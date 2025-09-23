@@ -61,9 +61,9 @@ class Calculadora {
 
   private static final String ZZ_CMAP_BLOCKS_PACKED_0 =
     "\11\0\5\1\22\0\1\1\7\0\1\2\1\3\1\4"+
-    "\1\5\1\0\1\6\1\7\1\10\1\11\11\12\113\0"+
-    "\1\1\32\0\1\1\u01df\0\1\1\177\0\13\1\35\0"+
-    "\2\1\5\0\1\1\57\0\1\1\240\0\1\1\377\0";
+    "\1\5\1\0\1\6\1\7\1\10\12\11\113\0\1\1"+
+    "\32\0\1\1\u01df\0\1\1\177\0\13\1\35\0\2\1"+
+    "\5\0\1\1\57\0\1\1\240\0\1\1\377\0";
 
   private static int [] zzUnpackcmap_blocks() {
     int [] result = new int[1280];
@@ -90,11 +90,11 @@ class Calculadora {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\1\1\1\3\1\4\1\5\1\6"+
-    "\1\7\2\10\3\0\1\11\1\12\11\0\1\13\1\0";
+    "\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7"+
+    "\1\10\1\11\1\12\1\13\1\14";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[27];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -119,13 +119,11 @@ class Calculadora {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\13\0\13\0\26\0\41\0\13\0\13\0\54"+
-    "\0\67\0\102\0\115\0\130\0\143\0\156\0\13\0\13"+
-    "\0\102\0\171\0\204\0\217\0\232\0\245\0\260\0\273"+
-    "\0\306\0\13\0\321";
+    "\0\0\0\12\0\12\0\12\0\12\0\24\0\12\0\12"+
+    "\0\36\0\50\0\62\0\12\0\12";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[27];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -148,23 +146,12 @@ class Calculadora {
   private static final int [] ZZ_TRANS = zzUnpacktrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\2\1\5\1\6\1\7\1\10"+
-    "\1\11\1\12\1\13\22\0\1\14\1\0\1\15\1\16"+
-    "\4\0\1\17\17\0\2\10\10\0\1\20\11\0\1\10"+
-    "\1\0\2\21\7\0\1\10\1\0\2\13\1\0\1\22"+
-    "\2\0\1\23\2\24\1\0\1\25\2\14\1\0\1\22"+
-    "\2\0\1\23\2\24\1\14\1\25\2\26\1\0\1\22"+
-    "\2\0\1\23\2\24\1\14\1\25\2\16\1\0\1\22"+
-    "\2\0\1\23\2\24\1\0\1\25\3\0\1\24\2\0"+
-    "\1\24\2\0\1\27\1\0\1\30\1\31\1\0\1\24"+
-    "\5\0\1\27\1\0\1\30\1\31\1\0\1\24\5\0"+
-    "\1\27\1\24\1\30\1\31\7\0\1\14\1\0\2\26"+
-    "\3\0\1\32\5\0\2\27\3\0\1\32\3\0\1\27"+
-    "\1\0\2\33\3\0\1\32\3\0\1\27\1\0\2\31"+
-    "\7\0\1\27\1\0\2\33";
+    "\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11"+
+    "\1\12\1\13\16\0\1\14\16\0\1\11\10\0\1\15"+
+    "\10\0\1\11\1\0\1\13";
 
   private static int [] zzUnpacktrans() {
-    int [] result = new int[220];
+    int [] result = new int[60];
     int offset = 0;
     offset = zzUnpacktrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -207,11 +194,10 @@ class Calculadora {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\2\11\2\1\2\11\4\1\3\0\2\11\11\0"+
-    "\1\11\1\0";
+    "\1\0\4\11\1\1\2\11\3\1\2\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[27];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -703,60 +689,65 @@ class Calculadora {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
-            { System.out.println(String.format("Illegal character %s on position: (%d, %d)", yytext(), yyline, yycolumn));
+            { System.out.println(String.format("Illegal character %s on position: (%d, %d)", yytext(), yyline, yycolumn)); throw new Error("");
             }
           // fall through
-          case 12: break;
+          case 13: break;
           case 2:
             { 
             }
           // fall through
-          case 13: break;
-          case 3:
-            { System.out.println(String.format("token: (%s, <MULTIPLICATION_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
-            }
-          // fall through
           case 14: break;
-          case 4:
-            { System.out.println(String.format("token: (%s, <SUM_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+          case 3:
+            { System.out.println(String.format("token: (%s, <OPEN_PARENTHESIS>), found on position (%d, %d)", yytext(), yyline, yycolumn));
             }
           // fall through
           case 15: break;
-          case 5:
-            { System.out.println(String.format("token: (%s, <MINUS_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+          case 4:
+            { System.out.println(String.format("token: (%s, <CLOSE_PARENTHESIS>), found on position (%d, %d)", yytext(), yyline, yycolumn));
             }
           // fall through
           case 16: break;
-          case 6:
-            { System.out.println(String.format("token: (%s, <NUM_FLOAT>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+          case 5:
+            { System.out.println(String.format("token: (%s, <MULTIPLICATION_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
             }
           // fall through
           case 17: break;
-          case 7:
-            { System.out.println(String.format("token: (%s, <DIVISION_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+          case 6:
+            { System.out.println(String.format("token: (%s, <SUM_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
             }
           // fall through
           case 18: break;
-          case 8:
-            { System.out.println(String.format("token: (%s, <NUM_INT>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+          case 7:
+            { System.out.println(String.format("token: (%s, <MINUS_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
             }
           // fall through
           case 19: break;
-          case 9:
-            { System.out.println(String.format("token: (%s, <EXP_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+          case 8:
+            { System.out.println(String.format("token: (%s, <NUM_FLOAT>), found on position (%d, %d)", yytext(), yyline, yycolumn));
             }
           // fall through
           case 20: break;
-          case 10:
-            { System.out.println(String.format("token: (%s, <WHOLE_DIVISION_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+          case 9:
+            { System.out.println(String.format("token: (%s, <DIVISION_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
             }
           // fall through
           case 21: break;
-          case 11:
-            { System.out.println(String.format("token: (%s, <PARENTHESES>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+          case 10:
+            { System.out.println(String.format("token: (%s, <NUM_INT>), found on position (%d, %d)", yytext(), yyline, yycolumn));
             }
           // fall through
           case 22: break;
+          case 11:
+            { System.out.println(String.format("token: (%s, <EXP_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+            }
+          // fall through
+          case 23: break;
+          case 12:
+            { System.out.println(String.format("token: (%s, <WHOLE_DIVISION_OP>), found on position (%d, %d)", yytext(), yyline, yycolumn));
+            }
+          // fall through
+          case 24: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
