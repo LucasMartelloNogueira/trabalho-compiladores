@@ -1,19 +1,14 @@
-# Para limpar pasta "target"
 
-    ./mvnw clean
+# Comandos para Calculadora
 
-# Para gerar .jar
+## Criando arquivo do Analisador Lexico
 
-    ./mvnw package
+    jflex-1.9.1/bin/jflex Calculadora.flex
 
-# Para rodar testes
+## Compilando arquivo do Analisador Lexico
 
-    ./mvw test
+    javac Calculadora.java
 
-# Para rodar
+## Executando arquivo de teste Analisador Lexico da calculadora
 
-    java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
-
-# Referencias
-
-* https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+    java Calculadora inputs_calculadora/teste{num_teste}.txt
