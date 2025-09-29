@@ -1,6 +1,6 @@
-*.java
 *.java~
 *.class
 /target
+!/jflex-1.9.1/*
 
 out.txt
