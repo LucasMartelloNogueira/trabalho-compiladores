@@ -5,9 +5,8 @@
 %line
 %column
 
-%state COMMENT   // defining a COMMENT state
-
-%%
+// defining a COMMENT state
+%state COMMENT
 
 // -------------------- AUXILIARY REGULAR EXPRESSIONS --------------------
 
@@ -19,48 +18,50 @@ NUM         = {digit}{digit}*
 
 WHITESPACE  = [ \t\r\n]+
 
+%%
+
 <YYINITIAL> {
   {WHITESPACE}     { /* ignore */ }
 
   "/*"             { yybegin(COMMENT); }   // enter COMMENT state
 
   // Keywords
-  "else"           { System.out.println("ELSE"); }
-  "if"             { System.out.println("IF"); }
-  "int"            { System.out.println("INT"); }
-  "return"         { System.out.println("RETURN"); }
-  "void"           { System.out.println("VOID"); }
-  "while"          { System.out.println("WHILE"); }
+  "else"           { System.out.println(String.format("(%s, <ELSE>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "if"             { System.out.println(String.format("(%s, <IF>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "int"            { System.out.println(String.format("(%s, <INT>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "return"         { System.out.println(String.format("(%s, <RETURN>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "void"           { System.out.println(String.format("(%s, <VOID>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "while"          { System.out.println(String.format("(%s, <WHILE>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
 
 
   // Relational operators
-  "<="             { System.out.println("LE"); }
-  "<"              { System.out.println("LT"); }
-  ">="             { System.out.println("GE"); }
-  ">"              { System.out.println("GT"); }
-  "=="             { System.out.println("EQ"); }
-  "!="             { System.out.println("NE"); }
+  "<="             { System.out.println(String.format("(%s, <LE>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "<"              { System.out.println(String.format("(%s, <LT>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  ">="             { System.out.println(String.format("(%s, <GE>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  ">"              { System.out.println(String.format("(%s, <GT>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "=="             { System.out.println(String.format("(%s, <EQ>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "!="             { System.out.println(String.format("(%s, <NE>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
 
   // Arithmetic operators
-  "+"              { System.out.println("PLUS"); }
-  "-"              { System.out.println("MINUS"); }
-  "*"              { System.out.println("TIMES"); }
-  "/"              { System.out.println("OVER"); }
+  "+"              { System.out.println(String.format("(%s, <PLUS>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "-"              { System.out.println(String.format("(%s, <MINUS>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "*"              { System.out.println(String.format("(%s, <TIMES>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "/"              { System.out.println(String.format("(%s, <OVER>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
 
   // Assignment and punctuation
-  "="              { System.out.println("ASSIGN"); }
-  ";"              { System.out.println("SEMI"); }
-  ","              { System.out.println("COMMA"); }
-  "("              { System.out.println("LPAREN"); }
-  ")"              { System.out.println("RPAREN"); }
-  "["              { System.out.println("LBRACKET"); }
-  "]"              { System.out.println("RBRACKET"); }
-  "{"              { System.out.println("LBRACE"); }
-  "}"              { System.out.println("RBRACE"); }
+  "="              { System.out.println(String.format("(%s, <ASSIGN>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  ";"              { System.out.println(String.format("(%s, <SEMI>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  ","              { System.out.println(String.format("(%s, <COMMA>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "("              { System.out.println(String.format("(%s, <LPAREN>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  ")"              { System.out.println(String.format("(%s, <RPAREN>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "["              { System.out.println(String.format("(%s, <LBRACKET>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "]"              { System.out.println(String.format("(%s, <RBRACKET>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "{"              { System.out.println(String.format("(%s, <LBRACE>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  "}"              { System.out.println(String.format("(%s, <RBRACE>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
 
   // Identifiers and numbers
-  {ID}             { System.out.println("ID(" + yytext() + ")"); }
-  {NUM}            { System.out.println("NUM(" + yytext() + ")"); }
+  {ID}             { System.out.println(String.format("(%s, <ID>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
+  {NUM}            { System.out.println(String.format("(%s, <NUM>), found on position (%d, %d)", yytext(), yyline, yycolumn)); }
 
 }
 
@@ -70,10 +71,10 @@ WHITESPACE  = [ \t\r\n]+
 
   "*/"             { yybegin(YYINITIAL); }   // close comment and return to initial state
 
-  [^*]+            { /* ignore comment content */ }
-  "*"              { /* could be part of "*/", keep scanning */ }
-
   \n               { /* ignore new line inside comment */ }
+
+  [^*]+            { /* ignore comment content */ }
+  "*"              { /* could be part of "*\/", keep scanning */ }
 
   <<EOF>>          { System.out.println("ERROR: unclosed comment!"); yybegin(YYINITIAL); }
 
