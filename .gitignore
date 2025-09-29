@@ -2,3 +2,5 @@
 *.java~
 *.class
 /target
+
+out.txt
