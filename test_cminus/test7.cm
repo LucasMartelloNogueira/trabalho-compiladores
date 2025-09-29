@@ -1,3 +1,8 @@
+/* abrindo um comentario e nao fechando ele
+   para forcar um erro no scanner
+   no output nao deve aparecer nada alem de erro
+
+
 void main(void)
 {
     int b[20];
