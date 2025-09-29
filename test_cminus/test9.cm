@@ -1,0 +1,11 @@
+/* caso de teste para lançar erro ao ler caracteres inválidos */
+
+
+void 1main(void)
+{
+    int b[20];
+    int i;
+
+    b[0] = 21;
+    output(b[0]);
+}
