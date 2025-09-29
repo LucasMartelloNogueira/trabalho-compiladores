@@ -1,8 +1,0 @@
-token: ((, <OPEN_PARENTHESIS>), found on position (0, 0)
-token: (1, <NUM_INT>), found on position (0, 1)
-token: (*, <MULTIPLICATION_OP>), found on position (0, 3)
-token: (2.4, <NUM_FLOAT>), found on position (0, 5)
-token: (), <CLOSE_PARENTHESIS>), found on position (0, 8)
-token: (+, <SUM_OP>), found on position (0, 10)
-token: ((, <OPEN_PARENTHESIS>), found on position (0, 12)
-Illegal character a on position: (0, 13)
