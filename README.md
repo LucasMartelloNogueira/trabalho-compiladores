@@ -11,4 +11,4 @@
 
 ## Executando arquivo de teste Analisador Lexico da calculadora
 
-    java Calculadora inputs_calculadora/teste{num_teste}.txt
+    java Calculadora test_calculadora/teste{num_teste}.txt
