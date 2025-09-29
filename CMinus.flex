@@ -14,8 +14,8 @@
 letter      = [a-zA-Z]
 digit       = [0-9]
 
-ID          = {letter}({letter}|{digit})*
-NUM         = {digit}+
+ID          = {letter}{letter}*
+NUM         = {digit}{digit}*
 
 WHITESPACE  = [ \t\r\n]+
 
