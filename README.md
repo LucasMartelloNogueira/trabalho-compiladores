@@ -103,7 +103,7 @@ void main(void)
 ```
 ## 🧪 Tests
 
-There are some sample test programs inside the `tests/` folder:
+Alguns exemplos de programas para teste dentro da pasta `tests/cminus`:
 -   `test1.cm` – Algoritmo de euclides
 -   `test2.cm` – Selection sort
 -   `test3.cm` – Definição de Arrays e Funções
