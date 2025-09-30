@@ -101,7 +101,7 @@ void main(void)
 (}, <RBRACE>), found on position (10, 4)
 (}, <RBRACE>), found on position (11, 0)
 ```
-## 🧪 Tests
+## 🧪 Testes
 
 Alguns exemplos de programas para teste dentro da pasta `tests/cminus`:
 -   `test1.cm` – Algoritmo de euclides
@@ -114,6 +114,6 @@ Alguns exemplos de programas para teste dentro da pasta `tests/cminus`:
 -   `test8.cm` – Caso de erro (Caracter inválido)
 -   `test9.cm` – Caso de erro (Caracter inválido em ID)
 
-## 📖 References
+## 📖 Referências
 -   [JFlex Official Website](https://jflex.de)
 -   Dragon Book: _Compilers – Principles, Techniques, and Tools_
