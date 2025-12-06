@@ -118,3 +118,4 @@ Alguns exemplos de programas para teste dentro da pasta `tests/cminus`:
 -   [JFlex Official Website](https://jflex.de)
 -   Dragon Book: _Compilers – Principles, Techniques, and Tools_
 -	tutorial jflex + cup: https://www.youtube.com/watch?v=rikupSyfXa0
+-	[Java Cup docs](https://www2.cs.tum.edu/projects/cup/)
