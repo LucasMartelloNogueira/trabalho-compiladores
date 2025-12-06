@@ -13,7 +13,15 @@
 
 
 * erros que aconteceram:
+Warning : *** Shift/Reduce conflict found in state #68
+  between selection_stmt ::= IF LPAREN expression RPAREN statement (*)
+  and     selection_stmt ::= IF LPAREN expression RPAREN statement (*) ELSE statement
+  under symbol ELSE
+  Resolved in favor of shifting.
 
+Warning : *** Production "arg_list ::= expression " never reduced
+Warning : *** Production "arg_list ::= arg_list COMMA expression " never reduced
+Warning : *** Production "args ::= empty " never reduced
 Warning : *** Production "args ::= arg_list " never reduced
 Warning : *** Production "call ::= ID LPAREN args RPAREN " never reduced
 Warning : *** Production "factor ::= NUM " never reduced
@@ -40,4 +48,12 @@ Error : *** More conflicts encountered than expected -- parser generation aborte
   0 productions never reduced.
   1 conflict detected (0 expected).
   No code produced.
----------------------------------------------------- (CUP v0.11b 20160615 (GIT 4ac7450))
+---------------------------------------------------- (CUP v0.11b 20160615 (GIT 4ac7450))'
+
+  - erro de ELSE não resolvido (não sabe de qual if é o else)
+  - solução, botar precedencia da esquerda (precedence left ELSE e precedencia contextual %prec)
+
+
+* como compilar Main.java
+
+    javac -cp java-cup-11b-runtime.jar *.java
