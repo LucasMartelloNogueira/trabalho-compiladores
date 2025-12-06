@@ -1,8 +1,11 @@
+import java_cup.runtime.*;
+
 %%
 
 %standalone
 %class CMinus
 %line
+%cup
 %column
 
 // defining a COMMENT state

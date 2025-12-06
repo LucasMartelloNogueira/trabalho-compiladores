@@ -37,7 +37,7 @@ A gramática é uma simplificação da linguagem C (C-) definido por uma BNF.
 	```bash 
 	 jflex-1.9.1/bin/jflex CMinus.flex
 	```
-	Isso irá gerar um arquivo `Calculadora.java`
+	Isso irá gerar um arquivo `CMinus.java`
  2. Compilar o código Java gerado
 	```bash 
 	 javac CMinus.java
@@ -117,3 +117,4 @@ Alguns exemplos de programas para teste dentro da pasta `tests/cminus`:
 ## 📖 Referências
 -   [JFlex Official Website](https://jflex.de)
 -   Dragon Book: _Compilers – Principles, Techniques, and Tools_
+-	tutorial jflex + cup: https://www.youtube.com/watch?v=rikupSyfXa0

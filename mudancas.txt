@@ -1,0 +1,43 @@
+* Cminus.flex
+
+- import java_cup.runtime.*;
+- add %cup: para simbolizar que vamos fazer análise sintatica tbm
+
+* adição arquivo de parser: Parser.cup
+ - problema: linha 11: sem declaração da regra var-declarations
+ - adição da produção vazia (empty)
+
+* comando para rodar java cup:
+
+    java -jar java-cup/java-cup-11b.jar <nome_parser>
+
+
+* erros que aconteceram:
+
+Warning : *** Production "args ::= arg_list " never reduced
+Warning : *** Production "call ::= ID LPAREN args RPAREN " never reduced
+Warning : *** Production "factor ::= NUM " never reduced
+Warning : *** Production "factor ::= call " never reduced
+Warning : *** Production "factor ::= var " never reduced
+Warning : *** Production "factor ::= LPAREN expression RPAREN " never reduced
+Warning : *** Production "mulop ::= OVER " never reduced
+Warning : *** Production "mulop ::= TIMES " never reduced
+Warning : *** Production "addop ::= MINUS " never reduced
+Warning : *** Production "addop ::= PLUS " never reduced
+Warning : *** Production "relop ::= NE " never reduced
+Warning : *** Production "relop ::= EQ " never reduced
+Warning : *** Production "relop ::= GE " never reduced
+Warning : *** Production "relop ::= GT " never reduced
+Warning : *** Production "relop ::= LT " never reduced
+Warning : *** Production "relop ::= LE " never reduced
+Error : *** More conflicts encountered than expected -- parser generation aborted
+------- CUP v0.11b 20160615 (GIT 4ac7450) Parser Generation Summary -------
+  1 error and 20 warnings
+  29 terminals, 30 non-terminals, and 62 productions declared,
+  producing 85 unique parse states.
+  0 terminals declared but not used.
+  0 non-terminals declared but not used.
+  0 productions never reduced.
+  1 conflict detected (0 expected).
+  No code produced.
+---------------------------------------------------- (CUP v0.11b 20160615 (GIT 4ac7450))
