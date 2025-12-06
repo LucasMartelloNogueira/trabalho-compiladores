@@ -56,4 +56,8 @@ Error : *** More conflicts encountered than expected -- parser generation aborte
 
 * como compilar Main.java
 
-    javac -cp java-cup-11b-runtime.jar *.java
+    javac -cp java-cup-11b-runtime.jar *.java (OK)
+
+* como rodar Main.class
+
+    java -cp ./java-cup-11b-runtime.jar:. Main (OK)

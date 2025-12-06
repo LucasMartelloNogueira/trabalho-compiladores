@@ -3,7 +3,7 @@ import java_cup.runtime.*;
 %%
 
 %standalone
-%class CMinus
+%class CMinus2
 %line
 %cup
 %column
@@ -79,8 +79,8 @@ WHITESPACE  = [ \t\r\n]+
   [^*]+            { /* ignore comment content */ }
   "*"              { /* could be part of "*\/", keep scanning */ }
 
-  <<EOF>>          { throw new Exception("unclosed comment"); }
+  <<EOF>>          { throw new RuntimeException("unclosed comment"); }
 
 }
 
-[^]                { throw new Exception("ERROR: illegal character '" + yytext() + "' at line " + (yyline+1) + ", column " + (yycolumn+1)); }
+[^]                { throw new RuntimeException("ERROR: illegal character '" + yytext() + "' at line " + (yyline+1) + ", column " + (yycolumn+1)); }
