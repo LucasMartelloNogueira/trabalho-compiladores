@@ -16,8 +16,8 @@ import java_cup.runtime.*;
 letter      = [a-zA-Z]
 digit       = [0-9]
 
-ID          = {letter}{letter}*
-NUM         = {digit}{digit}*
+ID          = {letter}({letter}|{digit})*
+NUM         = {digit}+
 
 WHITESPACE  = [ \t\r\n]+
 
@@ -64,7 +64,9 @@ WHITESPACE  = [ \t\r\n]+
 
   // Identifiers and numbers
   {ID}             { return new Symbol(sym.ID, yyline, yycolumn, yytext()); }
-  {NUM}            { return new Symbol(sym.NUM, yyline, yycolumn, yytext());}
+  {NUM}            { return new Symbol(sym.NUM, yyline, yycolumn, Integer.valueOf(yytext())); }
+
+  [^]              { throw new RuntimeException("ERROR: illegal character '" + yytext() + "' at line " + (yyline+1) + ", column " + (yycolumn+1)); }
 
 }
 
@@ -82,5 +84,3 @@ WHITESPACE  = [ \t\r\n]+
   <<EOF>>          { throw new RuntimeException("unclosed comment"); }
 
 }
-
-[^]                { throw new RuntimeException("ERROR: illegal character '" + yytext() + "' at line " + (yyline+1) + ", column " + (yycolumn+1)); }

@@ -7,7 +7,7 @@ terminal ASSIGN, SEMI, COMMA, LPAREN, RPAREN, LBRACKET, RBRACKET, LBRACE, RBRACE
 terminal ID, NUM;
 
 non terminal program, declaration_list, declaration, var_declaration;
-non terminal type_specifier, fun_declation, params, param_list;
+non terminal type_specifier, fun_declaration, params, param_list;
 non terminal param, compound_stmt, local_declarations, statement_list;
 non terminal statement, expression_stmt, selection_stmt, iteration_stmt;
 non terminal return_stmt, expression, var, simple_expression, relop, additive_expression;
@@ -19,10 +19,10 @@ precedence left TIMES, OVER;
 
 program ::= declaration_list;
 declaration_list ::= declaration_list declaration | declaration;
-declaration ::= var_declaration | fun_declation;
-var_declaration ::= type_specifier ID SEMI | type_specifier ID LBRACKET NUM RBRACKET;
+declaration ::= var_declaration | fun_declaration;
+var_declaration ::= type_specifier ID SEMI | type_specifier ID LBRACKET NUM RBRACKET SEMI;
 type_specifier ::= INT | VOID;
-fun_declation ::= type_specifier ID LPAREN params RPAREN compound_stmt;
+fun_declaration ::= type_specifier ID LPAREN params RPAREN compound_stmt;
 params ::= param_list | VOID;
 param_list ::= param_list COMMA param | param;
 param ::= type_specifier ID | type_specifier ID LBRACKET RBRACKET;
@@ -40,6 +40,7 @@ simple_expression ::= additive_expression relop additive_expression | additive_e
 relop ::= LE | LT | GT | GE | EQ | NE;
 additive_expression ::= additive_expression addop term | term;
 addop ::= PLUS | MINUS;
+term ::= term mulop factor | factor;
 mulop ::= TIMES | OVER;
 factor ::= LPAREN expression RPAREN | var | call | NUM;
 call ::= ID LPAREN args RPAREN;

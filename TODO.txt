@@ -1,0 +1,6 @@
+* ver se gramatica do C- aceita recursão
+ - se não aceitar, botar no relatorio
+ - se aceitar, ver pq não funciona com recursão
+
+
+* fazer classes do AST (abstract sytax tree)

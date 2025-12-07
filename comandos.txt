@@ -1,0 +1,16 @@
+* criar .java do flex
+
+    jflex-1.9.1/bin/jflex CMinus2.flex
+
+* criar .java do cup
+
+    java -jar java-cup/java-cup-11b.jar Parser.cup
+
+
+* compilar Main
+
+    javac -cp java-cup-11b-runtime.jar *.java
+
+* rodar main
+    
+    java -cp ./java-cup-11b-runtime.jar:. Main
