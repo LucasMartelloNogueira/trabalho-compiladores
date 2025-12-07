@@ -14,8 +14,12 @@ public class ReturnStmtNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("ReturnStmtNode");
-        if (isEmpty) System.out.println("return;");
-        if (expression != null) expression.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        indent(depth + 1);
+        System.out.println("RETURN");
+        if (expression != null) expression.printHelper(depth + 1);
     }
 }

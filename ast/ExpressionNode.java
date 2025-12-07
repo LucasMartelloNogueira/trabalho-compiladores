@@ -19,9 +19,16 @@ public class ExpressionNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("ExpressionNode");
-        if (varAssign != null) varAssign.print();
-        if (assignedExpr != null) assignedExpr.print();
-        if (simpleExpression != null) simpleExpression.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (varAssign != null) varAssign.printHelper(depth);
+        if (assignedExpr != null) {
+            indent(depth + 1);
+            System.out.println(" =");
+            assignedExpr.printHelper(depth + 1);
+        }
+        if (simpleExpression != null) simpleExpression.printHelper(depth);
     }
 }

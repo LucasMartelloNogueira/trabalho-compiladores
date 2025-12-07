@@ -18,9 +18,13 @@ public class DeclarationNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("DeclarationNode");
-        if (varDecl.isPresent()) varDecl.get().print();
-        if (funDecl.isPresent()) funDecl.get().print();
+        if (varDecl.isPresent()) varDecl.get().printHelper(0);
+        if (funDecl.isPresent()) funDecl.get().printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (varDecl.isPresent()) varDecl.get().printHelper(depth);
+        if (funDecl.isPresent()) funDecl.get().printHelper(depth);
     }
 
 }

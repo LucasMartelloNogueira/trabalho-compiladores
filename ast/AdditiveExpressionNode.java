@@ -18,10 +18,13 @@ public class AdditiveExpressionNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("AdditiveExpressionNode");
-        if (left != null) left.print();
-        if (addop != null) addop.print();
-        if (term != null) term.print();
-        if (single != null) single.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (left != null) left.printHelper(depth);
+        if (addop != null) addop.printHelper(depth);
+        if (term != null) term.printHelper(depth);
+        if (single != null) single.printHelper(depth);
     }
 }

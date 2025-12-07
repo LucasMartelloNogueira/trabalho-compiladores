@@ -24,10 +24,16 @@ public class FactorNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("FactorNode");
-        if (parenExpr != null) parenExpr.print();
-        if (var != null) var.print();
-        if (call != null) call.print();
-        if (num != null) System.out.println("NUM: " + num);
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (parenExpr != null) parenExpr.printHelper(depth);
+        if (var != null) var.printHelper(depth);
+        if (call != null) call.printHelper(depth);
+        if (num != null) {
+            indent(depth);
+            System.out.println("NUM: " + num);
+        }
     }
 }

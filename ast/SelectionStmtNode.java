@@ -19,9 +19,18 @@ public class SelectionStmtNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("SelectionStmtNode");
-        if (condition != null) condition.print();
-        if (thenStmt != null) thenStmt.print();
-        if (elseStmt != null) elseStmt.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        indent(depth + 1);
+        System.out.println("IF");
+        if (condition != null) condition.printHelper(depth + 2);
+        if (thenStmt != null) thenStmt.printHelper(depth + 1);
+        if (elseStmt != null) {
+            indent(depth + 1);
+            System.out.println("ELSE");
+            elseStmt.printHelper(depth + 2);
+        }
     }
 }

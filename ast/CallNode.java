@@ -11,7 +11,12 @@ public class CallNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("CallNode: " + id);
-        if (args != null) args.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        indent(depth + 1);
+        System.out.println("CALL: " + id);
+        if (args != null) args.printHelper(depth + 1);
     }
 }

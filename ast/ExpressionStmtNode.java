@@ -14,8 +14,14 @@ public class ExpressionStmtNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("ExpressionStmtNode");
-        if (isEmpty) System.out.println("empty expression stmt");
-        if (expression != null) expression.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (isEmpty) {
+            indent(depth + 1);
+            System.out.println(";");
+        }
+        if (expression != null) expression.printHelper(depth);
     }
 }

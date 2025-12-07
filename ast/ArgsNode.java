@@ -14,8 +14,10 @@ public class ArgsNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("ArgsNode");
-        if (isEmpty) System.out.println("empty args");
-        if (argList != null) argList.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (argList != null) argList.printHelper(depth);
     }
 }

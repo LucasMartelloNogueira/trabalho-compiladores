@@ -18,7 +18,12 @@ public class ParamNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("ParamNode: " + id + (isArray ? "[]" : ""));
-        if (type != null) type.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (type != null) type.printHelper(depth);
+        // indent(depth + 1);
+        System.out.println("ID: " + id + (isArray ? "[]" : ""));
     }
 }

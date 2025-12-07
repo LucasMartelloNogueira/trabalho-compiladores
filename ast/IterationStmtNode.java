@@ -11,8 +11,13 @@ public class IterationStmtNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("IterationStmtNode");
-        if (condition != null) condition.print();
-        if (body != null) body.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        indent(depth + 1);
+        System.out.println("WHILE");
+        if (condition != null) condition.printHelper(depth + 2);
+        if (body != null) body.printHelper(depth + 1);
     }
 }

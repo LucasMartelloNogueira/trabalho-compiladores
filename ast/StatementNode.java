@@ -15,11 +15,14 @@ public class StatementNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("StatementNode");
-        if (exprStmt != null) exprStmt.print();
-        if (compoundStmt != null) compoundStmt.print();
-        if (selectionStmt != null) selectionStmt.print();
-        if (iterationStmt != null) iterationStmt.print();
-        if (returnStmt != null) returnStmt.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (exprStmt != null) exprStmt.printHelper(depth);
+        if (compoundStmt != null) compoundStmt.printHelper(depth);
+        if (selectionStmt != null) selectionStmt.printHelper(depth);
+        if (iterationStmt != null) iterationStmt.printHelper(depth);
+        if (returnStmt != null) returnStmt.printHelper(depth);
     }
 }

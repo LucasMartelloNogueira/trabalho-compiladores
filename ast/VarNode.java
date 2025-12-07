@@ -15,7 +15,12 @@ public class VarNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("VarNode: " + id);
-        if (index != null) index.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        indent(depth + 1);
+        System.out.println("ID: " + id);
+        if (index != null) index.printHelper(depth + 1);
     }
 }

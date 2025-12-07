@@ -9,6 +9,11 @@ public class AddopNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("AddopNode: " + op);
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        indent(depth + 1);
+        System.out.println(" " + op);
     }
 }

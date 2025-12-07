@@ -15,9 +15,14 @@ public class FunDeclarationNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("FunDeclarationNode: " + id);
-        if (type != null) type.print();
-        if (params != null) params.print();
-        if (body != null) body.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (type != null) type.printHelper(depth);
+        // indent(depth + 1);
+        System.out.println("FUNCTION: " + id);
+        if (params != null) params.printHelper(depth + 1);
+        if (body != null) body.printHelper(depth + 1);
     }
 }

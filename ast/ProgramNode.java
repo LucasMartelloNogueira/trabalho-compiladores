@@ -10,9 +10,14 @@ public class ProgramNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("ProgramNode");
         if (list != null) {
-            list.print();
+            list.printHelper(0);
+        }
+    }
+
+    public void printHelper(int depth) {
+        if (list != null) {
+            list.printHelper(depth);
         }
     }
 

@@ -18,10 +18,13 @@ public class TermNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("TermNode");
-        if (left != null) left.print();
-        if (mulop != null) mulop.print();
-        if (factor != null) factor.print();
-        if (single != null) single.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (left != null) left.printHelper(depth);
+        if (mulop != null) mulop.printHelper(depth);
+        if (factor != null) factor.printHelper(depth);
+        if (single != null) single.printHelper(depth);
     }
 }

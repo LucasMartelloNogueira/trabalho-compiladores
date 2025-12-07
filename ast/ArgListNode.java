@@ -15,8 +15,11 @@ public class ArgListNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("ArgListNode");
-        if (list != null) list.print();
-        if (expression != null) expression.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (list != null) list.printHelper(depth);
+        if (expression != null) expression.printHelper(depth);
     }
 }

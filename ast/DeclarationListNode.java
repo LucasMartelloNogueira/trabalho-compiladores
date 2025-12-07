@@ -16,9 +16,13 @@ public class DeclarationListNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("DeclarationListNode");
-        if (list != null) list.print();
-        if (declaration != null) declaration.print();
+        if (list != null) list.printHelper(0);
+        if (declaration != null) declaration.printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (list != null) list.printHelper(depth);
+        if (declaration != null) declaration.printHelper(depth);
     }
 
 }

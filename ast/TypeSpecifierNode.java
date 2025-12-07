@@ -9,6 +9,11 @@ public class TypeSpecifierNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("TypeSpecifierNode: " + type);
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        indent(depth + 1);
+        System.out.print(type + " ");
     }
 }

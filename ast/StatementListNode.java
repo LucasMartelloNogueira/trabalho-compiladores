@@ -15,8 +15,11 @@ public class StatementListNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("StatementListNode");
-        if (list != null) list.print();
-        if (statement != null) statement.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (list != null) list.printHelper(depth);
+        if (statement != null) statement.printHelper(depth);
     }
 }

@@ -21,8 +21,14 @@ public class VarDeclarationNode extends ASTNode{
 
 	@Override
 	public void print() {
-		System.out.println("VarDeclarationNode: id=" + id);
-		if (type != null) type.print();
-		if (arraySize != null) System.out.println("arraySize=" + arraySize);
+		printHelper(0);
+	}
+
+	public void printHelper(int depth) {
+		if (type != null) type.printHelper(depth);
+		// indent(depth + 1);
+		System.out.print("ID: " + id);
+		if (arraySize != null) System.out.print("[" + arraySize + "]");
+		System.out.println();
 	}
 }

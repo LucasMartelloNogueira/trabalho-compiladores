@@ -18,10 +18,13 @@ public class SimpleExpressionNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("SimpleExpressionNode");
-        if (left != null) left.print();
-        if (relop != null) relop.print();
-        if (right != null) right.print();
-        if (single != null) single.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (left != null) left.printHelper(depth);
+        if (relop != null) relop.printHelper(depth);
+        if (right != null) right.printHelper(depth);
+        if (single != null) single.printHelper(depth);
     }
 }

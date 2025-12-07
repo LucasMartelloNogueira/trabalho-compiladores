@@ -11,8 +11,11 @@ public class CompoundStmtNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("CompoundStmtNode");
-        if (localDeclarations != null) localDeclarations.print();
-        if (statementList != null) statementList.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (localDeclarations != null) localDeclarations.printHelper(depth + 1);
+        if (statementList != null) statementList.printHelper(depth + 1);
     }
 }

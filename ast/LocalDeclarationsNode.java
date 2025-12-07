@@ -15,8 +15,11 @@ public class LocalDeclarationsNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("LocalDeclarationsNode");
-        if (list != null) list.print();
-        if (varDecl != null) varDecl.print();
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        if (list != null) list.printHelper(depth);
+        if (varDecl != null) varDecl.printHelper(depth);
     }
 }

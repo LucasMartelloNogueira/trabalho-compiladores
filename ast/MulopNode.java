@@ -9,6 +9,11 @@ public class MulopNode extends ASTNode{
 
     @Override
     public void print() {
-        System.out.println("MulopNode: " + op);
+        printHelper(0);
+    }
+
+    public void printHelper(int depth) {
+        indent(depth + 1);
+        System.out.println(op);
     }
 }
