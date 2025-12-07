@@ -1,0 +1,245 @@
+import java_cup.runtime.*;
+import ast.*;
+
+terminal ELSE, IF, INT, RETURN, VOID, WHILE;
+terminal LE, LT, GE, GT, EQ, NE;
+terminal PLUS, MINUS, TIMES, OVER;
+terminal ASSIGN, SEMI, COMMA, LPAREN, RPAREN, LBRACKET, RBRACKET, LBRACE, RBRACE;
+terminal ID, NUM;
+
+non terminal ProgramNode program;
+non terminal DeclarationListNode declaration_list;
+non terminal DeclarationNode declaration;
+non terminal VarDeclarationNode var_declaration;
+non terminal TypeSpecifierNode type_specifier;
+non terminal FunDeclarationNode fun_declaration;
+non terminal ParamsNode params;
+non terminal ParamListNode param_list;
+non terminal ParamNode param;
+non terminal CompoundStmtNode compound_stmt;
+non terminal LocalDeclarationsNode local_declarations;
+non terminal StatementListNode statement_list;
+non terminal StatementNode statement;
+non terminal ExpressionStmtNode expression_stmt;
+non terminal SelectionStmtNode selection_stmt;
+non terminal IterationStmtNode iteration_stmt;
+non terminal ReturnStmtNode return_stmt;
+non terminal ExpressionNode expression;
+non terminal VarNode var;
+non terminal SimpleExpressionNode simple_expression;
+non terminal RelopNode relop;
+non terminal AdditiveExpressionNode additive_expression;
+non terminal AddopNode addop;
+non terminal TermNode term;
+non terminal MulopNode mulop;
+non terminal FactorNode factor;
+non terminal CallNode call;
+non terminal ArgsNode args;
+non terminal ArgListNode arg_list;
+non terminal Object empty; 
+
+precedence left ELSE;
+precedence left PLUS, MINUS;
+precedence left TIMES, OVER;
+
+program ::= declaration_list:dl
+    {: 
+        RESULT = new ProgramNode(dl);
+        // RESULT.print();
+    :}
+    ;
+
+declaration_list ::= declaration_list:dl declaration:d
+    {: 
+        RESULT = new DeclarationListNode(dl, d); 
+    :}
+    | declaration:d
+    {: 
+        RESULT = new DeclarationListNode(d); 
+    :}
+    ;
+
+declaration ::= var_declaration:vd
+    {: 
+        RESULT = new DeclarationNode(vd); 
+    :}
+    | fun_declaration:fd
+    {: 
+        RESULT = new DeclarationNode(fd); 
+    :}
+    ;
+
+var_declaration ::= type_specifier:ts ID:id SEMI
+    {: 
+        RESULT = new VarDeclarationNode(ts, id.toString()); 
+    :}
+    | type_specifier:ts ID:id LBRACKET NUM:num RBRACKET SEMI
+    {: 
+        RESULT = new VarDeclarationNode(ts, id.toString(), Integer.valueOf(num.toString())); 
+    :}
+    ;
+
+type_specifier ::= INT
+    {: RESULT = new TypeSpecifierNode("INT"); :}
+    | VOID
+    {: RESULT = new TypeSpecifierNode("VOID"); :}
+    ;
+
+fun_declaration ::= type_specifier:ts ID:id LPAREN params:p RPAREN compound_stmt:cs
+    {: RESULT = new FunDeclarationNode(ts, id.toString(), p, cs); :}
+    ;
+
+params ::= param_list:pl
+    {: RESULT = new ParamsNode(pl); :}
+    | VOID
+    {: RESULT = new ParamsNode(true); :}
+    ;
+
+param_list ::= param_list:pl COMMA param:p
+    {: RESULT = new ParamListNode(pl, p); :}
+    | param:p
+    {: RESULT = new ParamListNode(p); :}
+    ;
+
+param ::= type_specifier:ts ID:id
+    {: RESULT = new ParamNode(ts, id.toString()); :}
+    | type_specifier:ts ID:id LBRACKET RBRACKET
+    {: RESULT = new ParamNode(ts, id.toString(), true); :}
+    ;
+
+compound_stmt ::= LBRACE local_declarations:ld statement_list:sl RBRACE
+    {: RESULT = new CompoundStmtNode(ld, sl); :}
+    ;
+
+local_declarations ::= local_declarations:ld var_declaration:vd
+    {: RESULT = new LocalDeclarationsNode(ld, vd); :}
+    | empty:e
+    {: RESULT = new LocalDeclarationsNode(); :}
+    ;
+
+statement_list ::= statement_list:sl statement:s
+    {: RESULT = new StatementListNode(sl, s); :}
+    | empty:e
+    {: RESULT = new StatementListNode(); :}
+    ;
+
+statement ::= expression_stmt:es
+    {: RESULT = new StatementNode(es); :}
+    | compound_stmt:cs
+    {: RESULT = new StatementNode(cs); :}
+    | selection_stmt:ss
+    {: RESULT = new StatementNode(ss); :}
+    | iteration_stmt:is
+    {: RESULT = new StatementNode(is); :}
+    | return_stmt:rs
+    {: RESULT = new StatementNode(rs); :}
+    ;
+
+expression_stmt ::= expression:e SEMI
+    {: RESULT = new ExpressionStmtNode(e); :}
+    | SEMI
+    {: RESULT = new ExpressionStmtNode(); :}
+    ;
+
+selection_stmt ::= IF LPAREN expression:e RPAREN statement:s
+    {: RESULT = new SelectionStmtNode(e, s); :} 
+    %prec ELSE
+    | IF LPAREN expression:e RPAREN statement:s1 ELSE statement:s2
+    {: RESULT = new SelectionStmtNode(e, s1, s2); :}
+    ;
+
+iteration_stmt ::= WHILE LPAREN expression:e RPAREN statement:s
+    {: RESULT = new IterationStmtNode(e, s); :}
+    ;
+
+return_stmt ::= RETURN SEMI
+    {: RESULT = new ReturnStmtNode(); :}
+    | RETURN expression:e SEMI
+    {: RESULT = new ReturnStmtNode(e); :}
+    ;
+
+expression ::= var:v ASSIGN expression:e
+    {: RESULT = new ExpressionNode(v, e); :}
+    | simple_expression:se
+    {: RESULT = new ExpressionNode(se); :}
+    ;
+
+var ::= ID:id
+    {: RESULT = new VarNode(id.toString()); :}
+    | ID:id LBRACKET expression:e RBRACKET
+    {: RESULT = new VarNode(id.toString(), e); :}
+    ;
+
+simple_expression ::= additive_expression:ae1 relop:r additive_expression:ae2
+    {: RESULT = new SimpleExpressionNode(ae1, r, ae2); :}
+    | additive_expression:ae
+    {: RESULT = new SimpleExpressionNode(ae); :}
+    ;
+
+relop ::= LE
+    {: RESULT = new RelopNode("<="); :}
+    | LT
+    {: RESULT = new RelopNode("<"); :}
+    | GT
+    {: RESULT = new RelopNode(">"); :}
+    | GE
+    {: RESULT = new RelopNode(">="); :}
+    | EQ
+    {: RESULT = new RelopNode("=="); :}
+    | NE
+    {: RESULT = new RelopNode("!="); :}
+    ;
+
+additive_expression ::= additive_expression:ae addop:ao term:t
+    {: RESULT = new AdditiveExpressionNode(ae, ao, t); :}
+    | term:t
+    {: RESULT = new AdditiveExpressionNode(t); :}
+    ;
+
+addop ::= PLUS
+    {: RESULT = new AddopNode("+"); :}
+    | MINUS
+    {: RESULT = new AddopNode("-"); :}
+    ;
+
+term ::= term:t mulop:mo factor:f
+    {: RESULT = new TermNode(t, mo, f); :}
+    | factor:f
+    {: RESULT = new TermNode(f); :}
+    ;
+
+mulop ::= TIMES
+    {: RESULT = new MulopNode("*"); :}
+    | OVER
+    {: RESULT = new MulopNode("/"); :}
+    ;
+
+factor ::= LPAREN expression:e RPAREN
+    {: RESULT = new FactorNode(e); :}
+    | var:v
+    {: RESULT = new FactorNode(v); :}
+    | call:c
+    {: RESULT = new FactorNode(c); :}
+    | NUM:n
+    {: RESULT = new FactorNode(Integer.valueOf(n.toString())); :}
+    ;
+
+call ::= ID:id LPAREN args:a RPAREN
+    {: RESULT = new CallNode(id.toString(), a); :}
+    ;
+
+args ::= arg_list:al
+    {: RESULT = new ArgsNode(al); :}
+    | empty:e
+    {: RESULT = new ArgsNode(); :}
+    ;
+
+arg_list ::= arg_list:al COMMA expression:e
+    {: RESULT = new ArgListNode(al, e); :}
+    | expression:e
+    {: RESULT = new ArgListNode(e); :}
+    ;
+
+empty ::=
+    {: RESULT = null; :}
+    ;

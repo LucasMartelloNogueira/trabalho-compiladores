@@ -4,3 +4,4 @@
 
 
 * fazer classes do AST (abstract sytax tree)
+ - para cada uma das regras, fazer uma classe de no da arvore

@@ -61,3 +61,10 @@ Error : *** More conflicts encountered than expected -- parser generation aborte
 * como rodar Main.class
 
     java -cp ./java-cup-11b-runtime.jar:. Main (OK)
+
+
+
+* para gerar AST:
+
+  - precisamos ajustar Parser.cup para criar nos da arvore
+  - para isso criamos os arquivos de nos da arvore (no pacote ast) para cada regra da gramatica

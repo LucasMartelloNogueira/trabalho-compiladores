@@ -4,6 +4,7 @@
 //----------------------------------------------------
 
 import java_cup.runtime.*;
+import ast.*;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -306,8 +307,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 0: // program ::= declaration_list 
             {
-              Object RESULT =null;
-
+              ProgramNode RESULT =null;
+		int dlleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int dlright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		DeclarationListNode dl = (DeclarationListNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 
+        RESULT = new ProgramNode(dl);
+        // RESULT.print();
+    
               CUP$parser$result = parser.getSymbolFactory().newSymbol("program",0, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -318,7 +325,7 @@ class CUP$parser$actions {
               Object RESULT =null;
 		int start_valleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int start_valright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
-		Object start_val = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		ProgramNode start_val = (ProgramNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		RESULT = start_val;
               CUP$parser$result = parser.getSymbolFactory().newSymbol("$START",0, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -329,8 +336,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 2: // declaration_list ::= declaration_list declaration 
             {
-              Object RESULT =null;
-
+              DeclarationListNode RESULT =null;
+		int dlleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int dlright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		DeclarationListNode dl = (DeclarationListNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		int dleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int dright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		DeclarationNode d = (DeclarationNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 
+        RESULT = new DeclarationListNode(dl, d); 
+    
               CUP$parser$result = parser.getSymbolFactory().newSymbol("declaration_list",1, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -338,8 +353,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 3: // declaration_list ::= declaration 
             {
-              Object RESULT =null;
-
+              DeclarationListNode RESULT =null;
+		int dleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int dright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		DeclarationNode d = (DeclarationNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 
+        RESULT = new DeclarationListNode(d); 
+    
               CUP$parser$result = parser.getSymbolFactory().newSymbol("declaration_list",1, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -347,8 +367,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 4: // declaration ::= var_declaration 
             {
-              Object RESULT =null;
-
+              DeclarationNode RESULT =null;
+		int vdleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int vdright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		VarDeclarationNode vd = (VarDeclarationNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 
+        RESULT = new DeclarationNode(vd); 
+    
               CUP$parser$result = parser.getSymbolFactory().newSymbol("declaration",2, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -356,8 +381,13 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 5: // declaration ::= fun_declaration 
             {
-              Object RESULT =null;
-
+              DeclarationNode RESULT =null;
+		int fdleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int fdright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		FunDeclarationNode fd = (FunDeclarationNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 
+        RESULT = new DeclarationNode(fd); 
+    
               CUP$parser$result = parser.getSymbolFactory().newSymbol("declaration",2, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -365,8 +395,16 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 6: // var_declaration ::= type_specifier ID SEMI 
             {
-              Object RESULT =null;
-
+              VarDeclarationNode RESULT =null;
+		int tsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int tsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		TypeSpecifierNode ts = (TypeSpecifierNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		 
+        RESULT = new VarDeclarationNode(ts, id.toString()); 
+    
               CUP$parser$result = parser.getSymbolFactory().newSymbol("var_declaration",3, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -374,8 +412,19 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 7: // var_declaration ::= type_specifier ID LBRACKET NUM RBRACKET SEMI 
             {
-              Object RESULT =null;
-
+              VarDeclarationNode RESULT =null;
+		int tsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int tsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		TypeSpecifierNode ts = (TypeSpecifierNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		int numleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int numright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		Object num = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		 
+        RESULT = new VarDeclarationNode(ts, id.toString(), Integer.valueOf(num.toString())); 
+    
               CUP$parser$result = parser.getSymbolFactory().newSymbol("var_declaration",3, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -383,8 +432,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 8: // type_specifier ::= INT 
             {
-              Object RESULT =null;
-
+              TypeSpecifierNode RESULT =null;
+		 RESULT = new TypeSpecifierNode("INT"); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("type_specifier",4, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -392,8 +441,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 9: // type_specifier ::= VOID 
             {
-              Object RESULT =null;
-
+              TypeSpecifierNode RESULT =null;
+		 RESULT = new TypeSpecifierNode("VOID"); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("type_specifier",4, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -401,8 +450,20 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 10: // fun_declaration ::= type_specifier ID LPAREN params RPAREN compound_stmt 
             {
-              Object RESULT =null;
-
+              FunDeclarationNode RESULT =null;
+		int tsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
+		int tsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
+		TypeSpecifierNode ts = (TypeSpecifierNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		int pleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int pright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		ParamsNode p = (ParamsNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int csleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int csright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		CompoundStmtNode cs = (CompoundStmtNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new FunDeclarationNode(ts, id.toString(), p, cs); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("fun_declaration",5, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -410,8 +471,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 11: // params ::= param_list 
             {
-              Object RESULT =null;
-
+              ParamsNode RESULT =null;
+		int plleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int plright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ParamListNode pl = (ParamListNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ParamsNode(pl); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("params",6, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -419,8 +483,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 12: // params ::= VOID 
             {
-              Object RESULT =null;
-
+              ParamsNode RESULT =null;
+		 RESULT = new ParamsNode(true); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("params",6, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -428,8 +492,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 13: // param_list ::= param_list COMMA param 
             {
-              Object RESULT =null;
-
+              ParamListNode RESULT =null;
+		int plleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int plright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		ParamListNode pl = (ParamListNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int pleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int pright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ParamNode p = (ParamNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ParamListNode(pl, p); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("param_list",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -437,8 +507,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 14: // param_list ::= param 
             {
-              Object RESULT =null;
-
+              ParamListNode RESULT =null;
+		int pleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int pright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ParamNode p = (ParamNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ParamListNode(p); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("param_list",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -446,8 +519,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 15: // param ::= type_specifier ID 
             {
-              Object RESULT =null;
-
+              ParamNode RESULT =null;
+		int tsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int tsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		TypeSpecifierNode ts = (TypeSpecifierNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ParamNode(ts, id.toString()); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("param",8, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -455,8 +534,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 16: // param ::= type_specifier ID LBRACKET RBRACKET 
             {
-              Object RESULT =null;
-
+              ParamNode RESULT =null;
+		int tsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int tsright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		TypeSpecifierNode ts = (TypeSpecifierNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		 RESULT = new ParamNode(ts, id.toString(), true); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("param",8, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -464,8 +549,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 17: // compound_stmt ::= LBRACE local_declarations statement_list RBRACE 
             {
-              Object RESULT =null;
-
+              CompoundStmtNode RESULT =null;
+		int ldleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int ldright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		LocalDeclarationsNode ld = (LocalDeclarationsNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int slleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int slright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		StatementListNode sl = (StatementListNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		 RESULT = new CompoundStmtNode(ld, sl); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("compound_stmt",9, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -473,8 +564,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 18: // local_declarations ::= local_declarations var_declaration 
             {
-              Object RESULT =null;
-
+              LocalDeclarationsNode RESULT =null;
+		int ldleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int ldright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		LocalDeclarationsNode ld = (LocalDeclarationsNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		int vdleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int vdright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		VarDeclarationNode vd = (VarDeclarationNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new LocalDeclarationsNode(ld, vd); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("local_declarations",10, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -482,8 +579,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 19: // local_declarations ::= empty 
             {
-              Object RESULT =null;
-
+              LocalDeclarationsNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new LocalDeclarationsNode(); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("local_declarations",10, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -491,8 +591,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 20: // statement_list ::= statement_list statement 
             {
-              Object RESULT =null;
-
+              StatementListNode RESULT =null;
+		int slleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int slright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		StatementListNode sl = (StatementListNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		StatementNode s = (StatementNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new StatementListNode(sl, s); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("statement_list",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -500,8 +606,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 21: // statement_list ::= empty 
             {
-              Object RESULT =null;
-
+              StatementListNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new StatementListNode(); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("statement_list",11, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -509,8 +618,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 22: // statement ::= expression_stmt 
             {
-              Object RESULT =null;
-
+              StatementNode RESULT =null;
+		int esleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int esright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ExpressionStmtNode es = (ExpressionStmtNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new StatementNode(es); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("statement",12, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -518,8 +630,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 23: // statement ::= compound_stmt 
             {
-              Object RESULT =null;
-
+              StatementNode RESULT =null;
+		int csleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int csright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		CompoundStmtNode cs = (CompoundStmtNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new StatementNode(cs); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("statement",12, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -527,8 +642,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 24: // statement ::= selection_stmt 
             {
-              Object RESULT =null;
-
+              StatementNode RESULT =null;
+		int ssleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int ssright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		SelectionStmtNode ss = (SelectionStmtNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new StatementNode(ss); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("statement",12, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -536,8 +654,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 25: // statement ::= iteration_stmt 
             {
-              Object RESULT =null;
-
+              StatementNode RESULT =null;
+		int isleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int isright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		IterationStmtNode is = (IterationStmtNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new StatementNode(is); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("statement",12, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -545,8 +666,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 26: // statement ::= return_stmt 
             {
-              Object RESULT =null;
-
+              StatementNode RESULT =null;
+		int rsleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int rsright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ReturnStmtNode rs = (ReturnStmtNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new StatementNode(rs); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("statement",12, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -554,8 +678,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 27: // expression_stmt ::= expression SEMI 
             {
-              Object RESULT =null;
-
+              ExpressionStmtNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		 RESULT = new ExpressionStmtNode(e); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expression_stmt",13, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -563,8 +690,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 28: // expression_stmt ::= SEMI 
             {
-              Object RESULT =null;
-
+              ExpressionStmtNode RESULT =null;
+		 RESULT = new ExpressionStmtNode(); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expression_stmt",13, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -572,8 +699,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 29: // selection_stmt ::= IF LPAREN expression RPAREN statement 
             {
-              Object RESULT =null;
-
+              SelectionStmtNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		StatementNode s = (StatementNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new SelectionStmtNode(e, s); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("selection_stmt",14, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -581,8 +714,17 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 30: // selection_stmt ::= IF LPAREN expression RPAREN statement ELSE statement 
             {
-              Object RESULT =null;
-
+              SelectionStmtNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-4)).value;
+		int s1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int s1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		StatementNode s1 = (StatementNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int s2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int s2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		StatementNode s2 = (StatementNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new SelectionStmtNode(e, s1, s2); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("selection_stmt",14, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -590,8 +732,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 31: // iteration_stmt ::= WHILE LPAREN expression RPAREN statement 
             {
-              Object RESULT =null;
-
+              IterationStmtNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		StatementNode s = (StatementNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new IterationStmtNode(e, s); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("iteration_stmt",15, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -599,8 +747,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 32: // return_stmt ::= RETURN SEMI 
             {
-              Object RESULT =null;
-
+              ReturnStmtNode RESULT =null;
+		 RESULT = new ReturnStmtNode(); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("return_stmt",16, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -608,8 +756,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 33: // return_stmt ::= RETURN expression SEMI 
             {
-              Object RESULT =null;
-
+              ReturnStmtNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		 RESULT = new ReturnStmtNode(e); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("return_stmt",16, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -617,8 +768,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 34: // expression ::= var ASSIGN expression 
             {
-              Object RESULT =null;
-
+              ExpressionNode RESULT =null;
+		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		VarNode v = (VarNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ExpressionNode(v, e); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expression",17, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -626,8 +783,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 35: // expression ::= simple_expression 
             {
-              Object RESULT =null;
-
+              ExpressionNode RESULT =null;
+		int seleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int seright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		SimpleExpressionNode se = (SimpleExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ExpressionNode(se); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expression",17, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -635,8 +795,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 36: // var ::= ID 
             {
-              Object RESULT =null;
-
+              VarNode RESULT =null;
+		int idleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new VarNode(id.toString()); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("var",18, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -644,8 +807,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 37: // var ::= ID LBRACKET expression RBRACKET 
             {
-              Object RESULT =null;
-
+              VarNode RESULT =null;
+		int idleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		 RESULT = new VarNode(id.toString(), e); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("var",18, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -653,8 +822,17 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 38: // simple_expression ::= additive_expression relop additive_expression 
             {
-              Object RESULT =null;
-
+              SimpleExpressionNode RESULT =null;
+		int ae1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int ae1right = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		AdditiveExpressionNode ae1 = (AdditiveExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int rleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int rright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		RelopNode r = (RelopNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		int ae2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int ae2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		AdditiveExpressionNode ae2 = (AdditiveExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new SimpleExpressionNode(ae1, r, ae2); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("simple_expression",19, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -662,8 +840,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 39: // simple_expression ::= additive_expression 
             {
-              Object RESULT =null;
-
+              SimpleExpressionNode RESULT =null;
+		int aeleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int aeright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		AdditiveExpressionNode ae = (AdditiveExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new SimpleExpressionNode(ae); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("simple_expression",19, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -671,8 +852,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 40: // relop ::= LE 
             {
-              Object RESULT =null;
-
+              RelopNode RESULT =null;
+		 RESULT = new RelopNode("<="); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("relop",20, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -680,8 +861,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 41: // relop ::= LT 
             {
-              Object RESULT =null;
-
+              RelopNode RESULT =null;
+		 RESULT = new RelopNode("<"); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("relop",20, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -689,8 +870,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 42: // relop ::= GT 
             {
-              Object RESULT =null;
-
+              RelopNode RESULT =null;
+		 RESULT = new RelopNode(">"); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("relop",20, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -698,8 +879,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 43: // relop ::= GE 
             {
-              Object RESULT =null;
-
+              RelopNode RESULT =null;
+		 RESULT = new RelopNode(">="); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("relop",20, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -707,8 +888,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 44: // relop ::= EQ 
             {
-              Object RESULT =null;
-
+              RelopNode RESULT =null;
+		 RESULT = new RelopNode("=="); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("relop",20, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -716,8 +897,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 45: // relop ::= NE 
             {
-              Object RESULT =null;
-
+              RelopNode RESULT =null;
+		 RESULT = new RelopNode("!="); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("relop",20, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -725,8 +906,17 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 46: // additive_expression ::= additive_expression addop term 
             {
-              Object RESULT =null;
-
+              AdditiveExpressionNode RESULT =null;
+		int aeleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int aeright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		AdditiveExpressionNode ae = (AdditiveExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int aoleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int aoright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		AddopNode ao = (AddopNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		TermNode t = (TermNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new AdditiveExpressionNode(ae, ao, t); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("additive_expression",21, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -734,8 +924,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 47: // additive_expression ::= term 
             {
-              Object RESULT =null;
-
+              AdditiveExpressionNode RESULT =null;
+		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		TermNode t = (TermNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new AdditiveExpressionNode(t); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("additive_expression",21, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -743,8 +936,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 48: // addop ::= PLUS 
             {
-              Object RESULT =null;
-
+              AddopNode RESULT =null;
+		 RESULT = new AddopNode("+"); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("addop",22, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -752,8 +945,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 49: // addop ::= MINUS 
             {
-              Object RESULT =null;
-
+              AddopNode RESULT =null;
+		 RESULT = new AddopNode("-"); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("addop",22, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -761,8 +954,17 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 50: // term ::= term mulop factor 
             {
-              Object RESULT =null;
-
+              TermNode RESULT =null;
+		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		TermNode t = (TermNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int moleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int moright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		MulopNode mo = (MulopNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		FactorNode f = (FactorNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new TermNode(t, mo, f); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("term",23, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -770,8 +972,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 51: // term ::= factor 
             {
-              Object RESULT =null;
-
+              TermNode RESULT =null;
+		int fleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int fright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		FactorNode f = (FactorNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new TermNode(f); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("term",23, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -779,8 +984,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 52: // mulop ::= TIMES 
             {
-              Object RESULT =null;
-
+              MulopNode RESULT =null;
+		 RESULT = new MulopNode("*"); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("mulop",24, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -788,8 +993,8 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 53: // mulop ::= OVER 
             {
-              Object RESULT =null;
-
+              MulopNode RESULT =null;
+		 RESULT = new MulopNode("/"); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("mulop",24, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -797,8 +1002,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 54: // factor ::= LPAREN expression RPAREN 
             {
-              Object RESULT =null;
-
+              FactorNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		 RESULT = new FactorNode(e); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("factor",25, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -806,8 +1014,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 55: // factor ::= var 
             {
-              Object RESULT =null;
-
+              FactorNode RESULT =null;
+		int vleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int vright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		VarNode v = (VarNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new FactorNode(v); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("factor",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -815,8 +1026,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 56: // factor ::= call 
             {
-              Object RESULT =null;
-
+              FactorNode RESULT =null;
+		int cleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		CallNode c = (CallNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new FactorNode(c); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("factor",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -824,8 +1038,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 57: // factor ::= NUM 
             {
-              Object RESULT =null;
-
+              FactorNode RESULT =null;
+		int nleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int nright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object n = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new FactorNode(Integer.valueOf(n.toString())); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("factor",25, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -833,8 +1050,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 58: // call ::= ID LPAREN args RPAREN 
             {
-              Object RESULT =null;
-
+              CallNode RESULT =null;
+		int idleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)).right;
+		Object id = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-3)).value;
+		int aleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
+		ArgsNode a = (ArgsNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
+		 RESULT = new CallNode(id.toString(), a); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("call",26, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -842,8 +1065,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 59: // args ::= arg_list 
             {
-              Object RESULT =null;
-
+              ArgsNode RESULT =null;
+		int alleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int alright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ArgListNode al = (ArgListNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ArgsNode(al); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("args",27, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -851,8 +1077,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 60: // args ::= empty 
             {
-              Object RESULT =null;
-
+              ArgsNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ArgsNode(); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("args",27, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -860,8 +1089,14 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 61: // arg_list ::= arg_list COMMA expression 
             {
-              Object RESULT =null;
-
+              ArgListNode RESULT =null;
+		int alleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int alright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		ArgListNode al = (ArgListNode)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ArgListNode(al, e); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("arg_list",28, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -869,8 +1104,11 @@ class CUP$parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 62: // arg_list ::= expression 
             {
-              Object RESULT =null;
-
+              ArgListNode RESULT =null;
+		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		ExpressionNode e = (ExpressionNode)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ArgListNode(e); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("arg_list",28, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -879,7 +1117,7 @@ class CUP$parser$actions {
           case 63: // empty ::= 
             {
               Object RESULT =null;
-
+		 RESULT = null; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("empty",29, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;

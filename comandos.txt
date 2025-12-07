@@ -11,6 +11,12 @@
 
     javac -cp java-cup-11b-runtime.jar *.java
 
+
+* compiar Main com package ast
+
+    javac -cp java-cup-11b-runtime.jar Main.java parser.java sym.java Cminus2.java ast/*.java
+
+
 * rodar main
     
-    java -cp ./java-cup-11b-runtime.jar:. Main
+    java -cp ./java-cup-11b-runtime.jar:. Main <nome_arquivo.cm>
