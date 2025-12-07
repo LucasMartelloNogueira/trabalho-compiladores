@@ -1,0 +1,12 @@
+=== AST ===
+----INT ID: i
+----INT ID: j
+----INT ID: array[20]
+----INT FUNCTION: foo
+----PARAMS: 
+--------INT ID: i
+--------INT ID: j
+------------INT ID: a
+------------INT ID: b[20]
+----INT FUNCTION: bar
+----PARAMS: VOID

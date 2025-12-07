@@ -18,13 +18,11 @@ public class ParamsNode extends ASTNode{
     }
 
     public void printHelper(int depth) {
+        indent(depth);
         if (isVoid) {
-            // indent(depth + 1);
-            // System.out.print("PARAMS: ");
             System.out.println("PARAMS: VOID");
         }
         if (list != null) {
-            indent(depth);
             System.out.println("PARAMS: ");
             list.printHelper(depth);   
         }

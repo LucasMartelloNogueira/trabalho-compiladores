@@ -1,0 +1,9 @@
+** nada foi printado para o arquivo pois análise sintática falhou devido leitura de caracter invalido
+
+** stack trace do erro:
+
+java.lang.RuntimeException: ERROR: illegal character '$' at line 6, column 5
+        at CMinus2.next_token(Cminus2.java:745)
+        at java_cup.runtime.lr_parser.scan(lr_parser.java:366)
+        at java_cup.runtime.lr_parser.parse(lr_parser.java:693)
+        at Main.main(Main.java:9)

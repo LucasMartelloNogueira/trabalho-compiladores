@@ -1,0 +1,14 @@
+=== AST ===
+----INT FUNCTION: foo
+----PARAMS: 
+--------INT ID: a
+--------INT ID: b
+------------CALL: output
+----------------ID: a
+------------CALL: output
+----------------ID: b
+----VOID FUNCTION: main
+----PARAMS: VOID
+------------CALL: foo
+------------NUM: 42
+------------NUM: 21
