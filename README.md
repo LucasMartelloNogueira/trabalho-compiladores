@@ -119,3 +119,28 @@ Alguns exemplos de programas para teste dentro da pasta `tests/cminus`:
 -   Dragon Book: _Compilers – Principles, Techniques, and Tools_
 -	tutorial jflex + cup: https://www.youtube.com/watch?v=rikupSyfXa0
 -	[Java Cup docs](https://www2.cs.tum.edu/projects/cup/)
+
+
+==========================================================
+
+# Entrega 2 - análise sintática
+
+## Como gerar arquivos parser.java e sym.java
+
+	java -jar java-cup/java-cup-11b.jar Parser2.cup
+
+## como compilar arquivo Main.java
+
+	javac -cp java-cup-11b-runtime.jar Main.java parser.java sym.java Cminus2.java ast/*.java
+
+## Como rodar arquivo Main
+
+	java -cp ./java-cup-11b-runtime.jar:. Main <nome_arquivo.cm>
+
+## Ex: rodando arquivo de teste 2 do diretorio tests e botando output em out.txt
+
+	java -cp ./java-cup-11b-runtime.jar:. Main tests/cminus/test2.cm > ast_test2.txt
+
+## ATENÇÃO!
+
+### Arquivos 1, 7, 8 e 9 dão erro de sintaxe, pois não são válidos para sintaxe do C-

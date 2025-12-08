@@ -1,6 +1,17 @@
 * criar .java do flex
 
-    jflex-1.9.1/bin/jflex CMinus2.flex
+    jflex-1.9.1/bin/jflex CMinus.flex
+
+
+* compilar Lexer (.java)
+
+    javac CMinus.java
+
+
+* como rodar Lexer (antigo, só tokens)
+
+    java  CMinus tests/cminus/test1.cm > resultados/tokens_test1.txt
+
 
 * criar .java do cup
 
